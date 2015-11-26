@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-us" ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>AngularJS 2-way binding</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- load bootstrap and fontawesome via CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <header>
+  		<nav class="navbar navbar-default">
+    		<div class="container">
+    			<div class="navbar-header">
+    				<a class="navbar-brand" href="/">AngularJS</a>
+    			</div>
+
+    			<ul class="nav navbar-nav navbar-right">
+    				<li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+    			</ul>
+    		</div>
+  		</nav>
+  	</header>
+
+    <div class="container">
+		  <div ng-controller="mainController">
+        <h1>AngularJS</h1>
+
+        <h2>Rules</h3>
+        <ul>
+          <li class="filled-in" ng-repeat="rule in rules">The handle {{ rule.rulename }}.</li>
+        </ul>
+
+        <hr>
+
+        <div>
+          <label for="handle">What is your Twitter handle?</label>
+          <input type="text" ng-model="handle" placeholder="@handle" />
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="alert alert-warning" ng-if="handle.length < characters"> <!--- Removed from DOM when false -->
+              Must be 5 characters (ng-if &lt;)
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="alert"
+                 ng-class="{ 'alert-danger' : handle.length < characters, 'alert-warning' : handle.length > characters }"
+                 ng-show="handle.length !== characters"> <!--- Hidden when false -->
+              <span ng-show="handle.length < characters">
+                You have entered less than 5 characters.
+              </span>
+
+              <span ng-show="handle.length > characters">
+                You can only enter 5 characters.
+              </span>
+              (ng-show'ed)
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="alert alert-warning" ng-hide="handle.length < characters">  <!--- Hidden when true -->
+              Must be 5 characters (ng-hide &lt;)
+            </div>
+          </div>
+        </div>
+        <hr>
+        <h3>twitter.com/<span class="filled-in">{{ handle | lowercase }}</span></h3>
+
+        <hr>
+        <input type="button" value="Click Me!" ng-click="clicked()" /><br>
+        <div ng-cloak>{{ name }}</div>  <!-- ng-cloak hides until replaced by Angular -->
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" ></script>
+  </body>
+</html>

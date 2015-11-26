@@ -1,9 +1,10 @@
 // MODULE
-var myApp = angular.module('myApp', ['ngMessages']);
+var myApp = angular.module('myApp', ['ngMessages', 'ngResource']);
 
 // CONTROLLERS
 // Angular injects $scope, $logt, and $filter
-myApp.controller('mainController', function($scope, $log, $filter) {
+// Listing them allows for minification
+myApp.controller('mainController', ['$scope', '$log', '$filter', '$resource', function($scope, $log, $filter, $resource) {
     $log.info($scope);
     $log.info($log);
 
@@ -11,7 +12,9 @@ myApp.controller('mainController', function($scope, $log, $filter) {
     formattedName = $filter('uppercase')($scope.name);
     $log.debug($scope.name)
     $log.debug(formattedName)
-});
+
+    var User = $resource('/user/:id', { user_id: '@id'});
+}]);
 
 var searchPeople = function(first, last, height, age, occupation) {
     return 'Julian Nicholls';
