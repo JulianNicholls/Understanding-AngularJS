@@ -33,12 +33,16 @@
 
     <div class="container">
 		  <div ng-controller="mainController">
-        <h1>AngularJS</h1>
+        <h1 class="text-center">AngularJS 2-way binding and AJAX operations</h1>
 
-        <h2>Rules</h3>
+        <h3>Rules from Node API</h3>
         <ul>
           <li class="filled-in" ng-repeat="rule in rules">The handle {{ rule.rulename }}.</li>
         </ul>
+
+        New Rule: <input type="text" ng-model='newRule'>
+        <a href="#" class="btn btn-primary" ng-click="addRule()">Add</a>
+        <a href="#" class="btn btn-warning" ng-click="resetRules()">Reset</a>
 
         <hr>
 
@@ -62,9 +66,8 @@
               </span>
 
               <span ng-show="handle.length > characters">
-                You can only enter 5 characters.
+                You can only enter 5 characters. (ng-show'ed)
               </span>
-              (ng-show'ed)
             </div>
           </div>
 
@@ -78,8 +81,9 @@
         <h3>twitter.com/<span class="filled-in">{{ handle | lowercase }}</span></h3>
 
         <hr>
+        <div class="filled-in" ng-cloak>{{ name }}</div>  <!-- ng-cloak hides until replaced by Angular -->
+
         <input type="button" value="Click Me!" ng-click="clicked()" /><br>
-        <div ng-cloak>{{ name }}</div>  <!-- ng-cloak hides until replaced by Angular -->
       </div>
     </div>
 
