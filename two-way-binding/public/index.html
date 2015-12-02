@@ -2,7 +2,7 @@
 <html lang="en-us" ng-app="myApp">
   <head>
     <meta charset="utf-8">
-    <title>AngularJS 2-way binding</title>
+    <title>Two-way binding</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="style.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script src="app.js"></script>
+    <script src="js/app.js"></script>
   </head>
   <body>
     <header>
@@ -25,7 +25,7 @@
     			</div>
 
     			<ul class="nav navbar-nav navbar-right">
-    				<li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+    				<li><a href="/"><i class="fa fa-home fa-lg"></i> Home</a></li>
     			</ul>
     		</div>
   		</nav>
@@ -36,13 +36,29 @@
         <h1 class="text-center">AngularJS 2-way binding and AJAX operations</h1>
 
         <h3>Rules from Node API</h3>
-        <ul>
-          <li class="filled-in" ng-repeat="rule in rules">The handle {{ rule.rulename }}.</li>
-        </ul>
 
-        New Rule: <input type="text" ng-model='newRule'>
-        <a href="#" class="btn btn-primary" ng-click="addRule()">Add</a>
-        <a href="#" class="btn btn-warning" ng-click="resetRules()">Reset</a>
+        <div class="row">
+          <div class="col-sm-5">
+            <ul class="list-unstyled">
+              <li class="filled-in" ng-repeat="rule in rules">
+                The handle {{ rule.rulename }}.
+                <a ng-if="$index > 2" ng-click="deleteRule($index)"
+                   href="#" class="btn btn-danger btn-xs">
+                  <i class="fa fa-remove"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-6">
+            New Rule: <input type="text" ng-model='newRule'>
+            <a href="#" class="btn btn-primary" ng-click="addRule()">
+              <i class="fa fa-plus-circle fa-lg"></i> Add
+            </a>
+            <a href="#" class="btn btn-warning" ng-click="resetRules()">
+              <i class="fa fa-refresh fa-lg"></i> Reset
+            </a>
+          </div>
+        </div>
 
         <hr>
 
@@ -52,15 +68,17 @@
         </div>
         <div class="row">
           <div class="col-sm-4">
-            <div class="alert alert-warning" ng-if="handle.length < characters"> <!--- Removed from DOM when false -->
+            <!--- Removed from DOM when false -->
+            <div class="alert alert-warning" ng-if="handle.length < characters">
               Must be 5 characters (ng-if &lt;)
             </div>
           </div>
 
           <div class="col-sm-4">
+            <!--- Hidden when false -->
             <div class="alert"
                  ng-class="{ 'alert-danger' : handle.length < characters, 'alert-warning' : handle.length > characters }"
-                 ng-show="handle.length !== characters"> <!--- Hidden when false -->
+                 ng-show="handle.length !== characters">
               <span ng-show="handle.length < characters">
                 You have entered less than 5 characters.
               </span>
@@ -72,7 +90,8 @@
           </div>
 
           <div class="col-sm-4">
-            <div class="alert alert-warning" ng-hide="handle.length < characters">  <!--- Hidden when true -->
+            <!--- Hidden when true -->
+            <div class="alert alert-warning" ng-hide="handle.length < characters">
               Must be 5 characters (ng-hide &lt;)
             </div>
           </div>
@@ -81,9 +100,9 @@
         <h3>twitter.com/<span class="filled-in">{{ handle | lowercase }}</span></h3>
 
         <hr>
-        <div class="filled-in" ng-cloak>{{ name }}</div>  <!-- ng-cloak hides until replaced by Angular -->
 
-        <input type="button" value="Click Me!" ng-click="clicked()" /><br>
+        <!-- ng-cloak hides until replaced by Angular -->
+        <div class="filled-in" ng-cloak>{{ name }} (Cloaked)</div>
       </div>
     </div>
 
