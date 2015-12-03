@@ -54,30 +54,16 @@ myApp.controller('secondController', ['$scope', '$log', function($scope, $log) {
 
 myApp.directive('searchResult', function () {
     return {
-        restrict: 'AECM',     // Attribute and Element as default, Class and comMent turned on
-//      template: '<a><p> etc'
         templateUrl: 'directives/search-result.html',
         replace: true,  // Replace the directive with contents, default is to wrap
         scope: {        // Turn off access to controller scope
-            personName: "@",                // Text, needs {{ }}
-            personAddress: "@",
             personObject: "=",              // Two-way binding object, no {{ }}
             formattedAddressFunction: "&"   // Function, no {{ }}
         },
-        compile: function(elem, attrs) {
-            console.debug('Compiling...');
-            console.debug(elem.html());
-
-            return {
-                pre: function(scope, elems, attrs) {
-                    console.debug('Pre-linking...');
-                    console.debug(elems);
-                },
-                post: function(scope, elems, attr) {
-                    console.debug('Post-linking...');
-                    console.debug(elems);
-                }
-            }
+        link: function(scope, elems, attrs) {
+            console.debug('Linking...');
+            console.debug(scope);
+            console.debug(elems);
         }
     }
-})
+});
