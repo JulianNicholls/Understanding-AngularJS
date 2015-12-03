@@ -63,6 +63,21 @@ myApp.directive('searchResult', function () {
             personAddress: "@",
             personObject: "=",              // Two-way binding object, no {{ }}
             formattedAddressFunction: "&"   // Function, no {{ }}
+        },
+        compile: function(elem, attrs) {
+            console.debug('Compiling...');
+            console.debug(elem.html());
+
+            return {
+                pre: function(scope, elems, attrs) {
+                    console.debug('Pre-linking...');
+                    console.debug(elems);
+                },
+                post: function(scope, elems, attr) {
+                    console.debug('Post-linking...');
+                    console.debug(elems);
+                }
+            }
         }
     }
 })
