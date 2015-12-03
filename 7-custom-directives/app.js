@@ -55,8 +55,9 @@ myApp.controller('secondController', ['$scope', '$log', function($scope, $log) {
 myApp.directive('searchResult', function () {
     return {
         templateUrl: 'directives/search-result.html',
-        replace: true,  // Replace the directive with contents, default is to wrap
-        scope: {        // Turn off access to controller scope
+        replace: true,      // Replace the directive with contents, default is to wrap
+        transclude: true,   // Insert any extra text in the directive
+        scope: {            // Turn off access to controller scope
             personObject: "=",              // Two-way binding object, no {{ }}
             formattedAddressFunction: "&"   // Function, no {{ }}
         },
