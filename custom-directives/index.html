@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="style.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
     <script src="app.js"></script>
   </head>
   <body>
@@ -25,16 +26,15 @@
     			</div>
 
     			<ul class="nav navbar-nav navbar-right">
-    				<li><a href="/"><i class="fa fa-home fa-lg"></i> Home</a></li>
+            <li><a href="#/"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="#/second">Second</a></li>
     			</ul>
     		</div>
   		</nav>
   	</header>
 
     <div class="container">
-		  <div ng-controller="mainController">
-        <h1>AngularJS</h1>
-      </div>
+		  <div ng-view></div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
