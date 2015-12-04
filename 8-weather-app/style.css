@@ -2,3 +2,17 @@
     color: #008;
     font-family: monospace;
 }
+
+.notop {
+    margin-top: 0;
+}
+
+th {
+    width: 5em;
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
+

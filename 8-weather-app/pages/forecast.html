@@ -1,3 +1,29 @@
-<h1>Weather Eye Forecast</h1>
+<div class="page-header">
+  <h1 class="text-center">Weather Eye Forecast</h1>
+</div>
 
-<h2>{{ city }}</h2>
+<div class="row">
+  <div class="col-sm-3 col-sm-offset-1">
+    <h2 class="notop">{{ city }}</h2>
+  </div>
+
+  <div class="col-sm-3 lead">
+    Days:
+    <a href="#/forecast/2" class="btn btn-xs"
+       ng-class="{'btn-primary': days === '2', 'btn-default': days !== '2'}">2</a> |
+    <a href="#/forecast/3" class="btn btn-xs"
+       ng-class="{'btn-primary': days === '3', 'btn-default': days !== '3'}">3</a> |
+    <a href="#/forecast/5" class="btn btn-xs"
+       ng-class="{'btn-primary': days === '5', 'btn-default': days !== '5'}">5</a> |
+    <a href="#/forecast/7" class="btn btn-xs"
+       ng-class="{'btn-primary': days === '7', 'btn-default': days !== '7'}">7</a>
+  </div>
+  <div class="col-sm-3 lead">
+    <a href="#/">Back to Search</a>
+  </div>
+</div>
+
+<weather-result ng-repeat="fc in weatherResult.list"
+  forecast="fc"
+  convert-to-celsius="convertToCelsius(temp)"
+  convert-to-date="convertToDate(dt)">

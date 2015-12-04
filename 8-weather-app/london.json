@@ -1,0 +1,91 @@
+
+{
+    "city": {
+        "id": 2643743,
+        "name": "London",
+        "coord": {
+            "lon": -0.12574,
+            "lat": 51.50853
+        },
+        "country": "GB",
+        "population": 0
+    },
+    "cod": "200",
+    "message": 0.0095,
+    "cnt": 3,
+    "list": [
+        {
+            "dt": 1449226800,
+            "temp": {
+                "day": 12.82,
+                "min": 9.57,
+                "max": 13.05,
+                "night": 12.68,
+                "eve": 12.61,
+                "morn": 9.57
+            },
+            "pressure": 1032.59,
+            "humidity": 93,
+            "weather": [
+                {
+                    "id": 500,
+                    "main": "Rain",
+                    "description": "light rain",
+                    "icon": "10d"
+                }
+            ],
+            "speed": 7.67,
+            "deg": 235,
+            "clouds": 92
+        },
+        {
+            "dt": 1449313200,
+            "temp": {
+                 "day": 13.43,
+                 "min": 11.77,
+                 "max": 13.43,
+                 "night": 11.77,
+                 "eve": 13.1,
+                 "morn": 12.77
+            },
+            "pressure": 1024.14,
+            "humidity": 72,
+            "weather": [
+                {
+                    "id": 803,
+                    "main": "Clouds",
+                    "description": "broken clouds",
+                    "icon": "04d"
+                }
+            ],
+            "speed": 12.62,
+            "deg": 224,
+            "clouds": 76
+        },
+        {
+            "dt": 1449399600,
+            "temp": {
+                "day": 14.58,
+                "min": 8.12,
+                "max": 14.58,
+                "night": 8.12,
+                "eve": 11.5,
+                "morn": 14.01
+            },
+            "pressure": 1016.51,
+            "humidity": 82,
+            "weather": [
+                {
+                    "id": 500,
+                    "main": "Rain",
+                    "description": "light rain",
+                    "icon": "10d"
+                }
+            ],
+            "speed": 10.81,
+            "deg": 234,
+            "clouds": 88,
+            "rain": 1.22
+        }
+    ]
+}
