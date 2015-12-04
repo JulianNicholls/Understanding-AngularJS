@@ -12,7 +12,8 @@ myApp.config(function($routeProvider) {
         templateUrl: 'pages/second.html',
         controller: 'secondController'
     });
-})
+});
+
 // CONTROLLERS
 myApp.controller('mainController', ['$scope', '$location', '$log', function($scope, $location, $log) {
     $scope.name = 'Main';
