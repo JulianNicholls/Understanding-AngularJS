@@ -3,8 +3,8 @@
 </div>
 
 <div class="row">
-  <div class="col-sm-3 col-sm-offset-1">
-    <h2 class="notop">{{ city }}</h2>
+  <div class="col-sm-4 col-sm-offset-1">
+    <h2 class="notop">{{ weatherResult.city.name }}, {{ weatherResult.city.country }}</h2>
   </div>
 
   <div class="col-sm-3 lead">
@@ -16,7 +16,9 @@
     <a href="#/forecast/5" class="btn btn-xs"
        ng-class="{'btn-primary': days === '5', 'btn-default': days !== '5'}">5</a> |
     <a href="#/forecast/7" class="btn btn-xs"
-       ng-class="{'btn-primary': days === '7', 'btn-default': days !== '7'}">7</a>
+       ng-class="{'btn-primary': days === '7', 'btn-default': days !== '7'}">7</a> |
+    <a href="#/forecast/10" class="btn btn-xs"
+       ng-class="{'btn-primary': days === '10', 'btn-default': days !== '10'}">10</a>
   </div>
   <div class="col-sm-3 lead">
     <a href="#/">Back to Search</a>
