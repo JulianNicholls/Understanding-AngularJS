@@ -3,7 +3,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">
-          {{ convertToDate({ dt: forecast.dt }) | date: 'fullDate' }}
+          {{ toDate({ dt: forecast.dt }) | date: 'fullDate' }}
         </h3>
       </div>
       <div class="panel-body">
@@ -11,14 +11,16 @@
           <tr><th colspan="6">Temperatures</th></tr>
           <tr><th>Day</th><th>Min</th><th>Max</th><th>Night</th><th>Evening</th><th>Morning</th></tr>
           <tr>
-            <td>{{ convertToCelsius({ temp: forecast.temp.day }) }}</td>
-            <td>{{ convertToCelsius({ temp: forecast.temp.min }) }}</td>
-            <td>{{ convertToCelsius({ temp: forecast.temp.max }) }}</td>
-            <td>{{ convertToCelsius({ temp: forecast.temp.night }) }}</td>
-            <td>{{ convertToCelsius({ temp: forecast.temp.eve }) }}</td>
-            <td>{{ convertToCelsius({ temp: forecast.temp.morn }) }}</td>
+            <td>{{ toC({ temp: forecast.temp.day }) }}&deg;C</td>
+            <td>{{ toC({ temp: forecast.temp.min }) }}&deg;C</td>
+            <td>{{ toC({ temp: forecast.temp.max }) }}&deg;C</td>
+            <td>{{ toC({ temp: forecast.temp.night }) }}&deg;C</td>
+            <td>{{ toC({ temp: forecast.temp.eve }) }}&deg;C</td>
+            <td>{{ toC({ temp: forecast.temp.morn }) }}&deg;C</td>
           </tr>
         </table>
+        <p>Summary: {{ forecast.weather[0].description }}</p>
+        <p>Wind: {{ formatWind({ dir: forecast.deg, ms: forecast.speed }) }}</p>
       </div>
     </div>
   </div>

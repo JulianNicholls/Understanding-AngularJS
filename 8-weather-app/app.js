@@ -57,6 +57,29 @@ app.controller('forecastController', ['$scope', '$resource', '$routeParams', 'tr
     $scope.convertToDate = function(dt) {
         return new Date(dt * 1000);
     }
+
+    $scope.formatWind = function(dir, m_s) {
+        var directions = [
+            [-22.5, 22.5,  'N'],
+            [22.5,  67.5,  'NE'],
+            [67.5,  112.5, 'E'],
+            [112.5, 157.5, 'SE'],
+            [157.5, 202.5, 'S'],
+            [202.5, 247.5, 'SW'],
+            [247.5, 292.5, 'W'],
+            [292.5, 337.5, 'NW']
+        ],
+        dir_text;
+
+        for(var i = 0; i < directions.length; ++i) {
+            if(dir > directions[i][0] && dir < directions[i][1]) {
+                dir_text = directions[i][2];
+                break
+            }
+        }
+
+        return dir_text + ' at ' + Math.round(m_s * 3.6 * 0.6214) + ' mph'
+    }
 }]);
 
 app.directive('weatherResult', function () {
@@ -66,8 +89,9 @@ app.directive('weatherResult', function () {
         transclude: true,
         scope: {
             forecast: "=",
-            convertToCelsius: "&",
-            convertToDate: "&"
+            toC: "&",
+            toDate: "&",
+            formatWind: "&"
         }
     }
 });

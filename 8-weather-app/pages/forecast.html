@@ -25,5 +25,6 @@
 
 <weather-result ng-repeat="fc in weatherResult.list"
   forecast="fc"
-  convert-to-celsius="convertToCelsius(temp)"
-  convert-to-date="convertToDate(dt)">
+  to-c="convertToCelsius(temp)"
+  to-date="convertToDate(dt)"
+  format-wind="formatWind(dir, ms)">
