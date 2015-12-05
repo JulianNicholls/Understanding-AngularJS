@@ -10,9 +10,13 @@
 th {
     width: 5em;
     text-align: center;
+    font-weight: normal;
 }
 
 td {
     text-align: center;
 }
 
+table {
+    margin-bottom: 10px;
+}
