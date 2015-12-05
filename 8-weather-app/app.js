@@ -51,7 +51,7 @@ app.controller('forecastController', ['$scope', '$resource', '$routeParams', 'tr
     });
 
     $scope.convertToCelsius = function(kelvin) {
-        return Math.round((kelvin - 273.15) * 10) / 10;
+        return Math.round(kelvin - 273.15);
     }
 
     $scope.convertToDate = function(dt) {
