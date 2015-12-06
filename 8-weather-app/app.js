@@ -33,8 +33,8 @@ app.controller('mainController', ['$scope', 'transferService', function($scope, 
     })
 }]);
 
-app.controller('forecastController', ['$scope', '$resource', '$routeParams', 'transferService',
-  function($scope, $resource, $routeParams, transferService) {
+app.controller('forecastController', ['$scope', '$resource', '$routeParams', '$sce', 'transferService',
+  function($scope, $resource, $routeParams, $sce, transferService) {
 
     $scope.city = transferService.city;
     $scope.days = $routeParams.days || '3';
@@ -60,14 +60,22 @@ app.controller('forecastController', ['$scope', '$resource', '$routeParams', 'tr
 
     $scope.formatWind = function(dir, m_s) {
         var directions = [
-            [-22.5, 22.5,  'N'],
-            [22.5,  67.5,  'NE'],
-            [67.5,  112.5, 'E'],
-            [112.5, 157.5, 'SE'],
-            [157.5, 202.5, 'S'],
-            [202.5, 247.5, 'SW'],
-            [247.5, 292.5, 'W'],
-            [292.5, 337.5, 'NW']
+            [-11.25,  11.25, 'N'],
+            [ 11.25,  33.75, 'NNE'],
+            [ 33.75,  56.25, 'NE'],
+            [ 56.25,  78.75, 'ENE'],
+            [ 78.75, 101.25, 'E'],
+            [101.25, 123.75, 'ESE'],
+            [123.75, 146.25, 'SE'],
+            [146.25, 168.75, 'SSE'],
+            [168.75, 191.25, 'S'],
+            [191.25, 213.75, 'SSW'],
+            [213.75, 236.25, 'SW'],
+            [236.25, 258.75, 'WSW'],
+            [258.75, 281.25, 'W'],
+            [281.25, 303.75, 'WNW'],
+            [303.75, 326.25, 'NW'],
+            [326.25, 348.75, 'NNW']
         ],
         dir_text;
 
@@ -78,7 +86,7 @@ app.controller('forecastController', ['$scope', '$resource', '$routeParams', 'tr
             }
         }
 
-        return dir_text + ' at ' + Math.round(m_s * 3.6 * 0.6214) + ' mph'
+        return $sce.trustAsHtml(dir_text + ' (' + dir + '&deg;) at ' + Math.round(m_s * 3.6 * 0.6214) + 'mph');
     }
 }]);
 

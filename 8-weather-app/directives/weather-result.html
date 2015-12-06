@@ -20,7 +20,7 @@
           </tr>
         </table>
         <p>Summary: {{ forecast.weather[0].description }}</p>
-        <p>Wind: {{ formatWind({ dir: forecast.deg, ms: forecast.speed }) }}</p>
+        <p>Wind: <span ng-bind-html="formatWind({ dir: forecast.deg, ms: forecast.speed })"></span></p>
       </div>
     </div>
   </div>
