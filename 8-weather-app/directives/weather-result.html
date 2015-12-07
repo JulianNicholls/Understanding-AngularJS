@@ -3,7 +3,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">
-          {{ toDate({ dt: forecast.dt }) | date: 'fullDate' }}
+          {{ toDate({ dt: forecast.dt }) | date: dateFormat }}
         </h3>
       </div>
       <div class="panel-body">
