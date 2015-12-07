@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          {{ toDate({ dt: forecast.dt }) | date: dateFormat }}
+        </h3>
+      </div>
+      <div class="panel-body">
+        <table class+"table temps">
+          <tr><th colspan="6">Temperatures</th></tr>
+          <tr><th>Day</th><th>Min</th><th>Max</th><th>Night</th><th>Evening</th><th>Morning</th></tr>
+          <tr>
+            <td>{{ toC({ temp: forecast.temp.day }) }}&deg;C</td>
+            <td>{{ toC({ temp: forecast.temp.min }) }}&deg;C</td>
+            <td>{{ toC({ temp: forecast.temp.max }) }}&deg;C</td>
+            <td>{{ toC({ temp: forecast.temp.night }) }}&deg;C</td>
+            <td>{{ toC({ temp: forecast.temp.eve }) }}&deg;C</td>
+            <td>{{ toC({ temp: forecast.temp.morn }) }}&deg;C</td>
+          </tr>
+        </table>
+        <p>Summary: {{ forecast.weather[0].description }}</p>
+        <p>Wind: <span ng-bind-html="formatWind({ dir: forecast.deg, ms: forecast.speed })"></span></p>
+      </div>
+    </div>
+  </div>
+</div>
