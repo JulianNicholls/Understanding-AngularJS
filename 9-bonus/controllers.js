@@ -1,13 +1,14 @@
 // Controllers
 
 app.controller('mainController', ['$scope', '$location', 'transferService', function($scope, $location, transferService) {
-    $scope.city = transferService.city;
+    this.city = transferService.city;
 
-    $scope.$watch('city', function () {
-        transferService.city = $scope.city;
+    $scope.$watch('main.city', function (new_val, old) {
+        console.debug('tcity=' + new_val);
+        transferService.city = new_val;
     })
 
-    $scope.submit = function () {
+    this.submit = function () {
         $location.path("/forecast")
     }
 }]);
