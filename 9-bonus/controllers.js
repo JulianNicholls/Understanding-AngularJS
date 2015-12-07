@@ -1,10 +1,11 @@
 // Controllers
 
-app.controller('mainController', ['$scope', '$location', 'transferService', function($scope, $location, transferService) {
+app.controller('mainController',
+               ['$scope', '$location', 'transferService',
+                function($scope, $location, transferService) {
     this.city = transferService.city;
 
-    $scope.$watch('main.city', function (new_val, old) {
-        console.debug('tcity=' + new_val);
+    $scope.$watch('main.city', function (new_val) {
         transferService.city = new_val;
     })
 
@@ -13,23 +14,22 @@ app.controller('mainController', ['$scope', '$location', 'transferService', func
     }
 }]);
 
-app.controller('forecastController', ['$scope', '$routeParams', '$sce', 'transferService', 'weatherService',
-  function($scope, $routeParams, $sce, transferService, weatherService) {
+app.controller('forecastController',
+               ['$routeParams', '$sce', 'transferService', 'weatherService',
+                function($routeParams, $sce, transferService, weatherService) {
+    this.days = $routeParams.days || '3';
 
-    $scope.city = transferService.city;
-    $scope.days = $routeParams.days || '3';
+    this.weatherResult = weatherService.get(transferService.city, this.days);
 
-    $scope.weatherResult = weatherService.get($scope.city, $scope.days);
-
-    $scope.convertToDate = function(dt) {
+    this.convertToDate = function(dt) {
         return new Date(dt * 1000);
     }
 
-    $scope.convertToCelsius = function(kelvin) {
+    this.convertToCelsius = function(kelvin) {
         return Math.round(kelvin - 273.15);
     }
 
-    $scope.formatWind = function(dir, m_s) {
+    this.formatWind = function(dir, m_s) {
         var directions = [
             [-11.25,  11.25, 'N'],
             [ 11.25,  33.75, 'NNE'],

@@ -6,9 +6,9 @@ app.config(function($routeProvider) {
         controller: 'mainController as main'
     }).when('/forecast', {
         templateUrl: 'pages/forecast.html',
-        controller: 'forecastController'
+        controller: 'forecastController as fcCtlr'
     }).when('/forecast/:days', {
         templateUrl: 'pages/forecast.html',
-        controller: 'forecastController'
+        controller: 'forecastController as fcCtlr'
     });
 });
